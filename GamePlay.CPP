@@ -1,0 +1,952 @@
+#include<iostream.h>
+#include<graphics.h>
+#include<conio.h>
+#include<dos.h>
+#include<stdlib.h>
+void call();
+void screen()
+{rectangle(1,1,639,479);
+ setfillstyle(1,0);
+ bar(0,0,getmaxx(),getmaxy());
+ setcolor(0);
+ setfillstyle(10,1);
+ bar(0,0,640,100);
+ rectangle(-1,-1,640,100);
+ setfillstyle(4,9);
+ bar(0,425,640,480);
+ rectangle(-1,424,640,525);
+ setcolor(15);
+ rectangle(5,5,632,95);
+ line(150,5,150,95);
+ setfillstyle(9,1);
+ bar(10,65,145,90);
+ setfillstyle(1,0);
+ bar(151,6,630,94);
+}
+void anykey()
+{
+gotoxy(50,5);
+long pass;
+cout<<"Press any key to continue....";
+char xy = getch();
+if(xy=='e')
+{
+cleardevice();
+gotoxy(25,14);
+cout<<"ENTER THE CHEAT CODE LEAVE THE GAME: ";
+cin>>pass;
+
+	if(pass == 272998)
+	closegraph();
+else
+{
+cout<<"YOU CANT EVEN CHEAT PROPERLY.... STOP STALLING AND PLAY THE GAME.....";
+getch();
+}}
+}
+
+
+
+
+void slow_print(char st[100],int dt,int x,int y)
+	{
+
+		int i=0,size=0;
+		while(size==0)
+		{
+			if(st[i] == '.')
+				size = (i+1);
+			i++;
+		}
+		gotoxy(x,y);
+		for (i = 0; i<=size; i++)
+		{
+
+			cout<<st[i];
+			delay(dt);
+		}
+
+	}
+
+void rtcol()
+{setfillstyle(1,8);
+ bar(0,115,50,410);
+ setcolor(0);
+ rectangle(-1,115,50,409);
+ rectangle(8,135,11,385);
+ rectangle(26,135,29,385);
+ rectangle(43,135,46,385);
+
+ bar(0,110,55,115);
+ bar(0,105,60,110);
+ bar(0,100,65,105);
+ rectangle(-1,110,55,115);
+ rectangle(-1,105,60,110);
+ rectangle(-1,100,65,105);
+
+ bar(0,409,55,414);
+ bar(0,414,60,419);
+ bar(0,419,65,424);
+ rectangle(-1,409,55,414);
+ rectangle(-1,414,60,419);
+ rectangle(-1,419,65,424);
+}
+
+void ltcol()
+{setfillstyle(1,8);
+ bar(640,115,590,409);
+ setcolor(0);
+ rectangle(640,115,590,409);
+ rectangle(632,135,629,385);
+ rectangle(614,135,611,385);
+ rectangle(597,135,594,385);
+
+ bar(640,110,585,115);
+ bar(640,105,580,110);
+ bar(640,100,575,105);
+ rectangle(640,110,585,115);
+ rectangle(640,105,580,110);
+ rectangle(640,100,575,105);
+
+ bar(640,409,585,414);
+ bar(640,414,580,419);
+ bar(640,419,575,424);
+ rectangle(640,409,585,414);
+ rectangle(640,414,580,419);
+ rectangle(640,419,575,424);
+}
+
+void joystick()
+{setcolor(1);
+ setfillstyle(1,14);
+ bar(150,200,210,230);
+
+ setfillstyle(1,8);
+ bar(155,205,175,225);
+
+ setfillstyle(9,1);
+ arc(195,215,0,360,10);
+ arc(195,215,0,360,5);
+ floodfill(195,215,1);
+
+ setfillstyle(9,1);
+ bar(161,206,169,210);
+ bar(161,220,169,224);
+ bar(156,211,160,219);
+ bar(170,211,174,219);
+
+ setcolor(4);
+ line(180,185,180,199);
+ arc(180,183,0,360,2);
+
+ do
+ {setfillstyle(1,2);
+  floodfill(180,183,4);
+  delay(400);
+  setfillstyle(1,0);
+  floodfill(180,183,4);
+  delay(400);
+ }while(!kbhit());
+}
+
+void leon(int x,int y)
+{ //Leonhart
+  //man
+  int prevy=y,prevx=x,superodd;
+  setcolor(0);
+  for(superodd=prevy;superodd>prevy-15;superodd--)
+   {line(prevx-5,superodd,prevx+5,superodd);}
+  setcolor(8);
+
+  //legs
+  setcolor(1);
+  rectangle(x+4,y-3,x+1,y-20);
+  setfillstyle(1,1);
+  floodfill(x+2,y-4,1);
+  rectangle(x-3,y-3,x-1,y-20);
+  setfillstyle(1,1);
+  floodfill(x-2,y-4,1);
+  setcolor(15);
+  rectangle(x+5,y-3,x+1,y-4);
+  rectangle(x-4,y-3,x-1,y-4);
+
+  //torso
+  setcolor(4);
+  rectangle(x-3,y-20,x+5,y-29);
+  setfillstyle(1,4);
+  floodfill(x-2,y-21,4);
+  setcolor(4);
+  rectangle(x-3,y-20,x+4,y-18);
+  setfillstyle(1,4);
+  floodfill(x-2,y-19,4);
+  setcolor(15);
+  settextstyle(2,0,4);
+  outtextxy(x-2,y-29,"L");
+
+  //arms
+   setcolor(4);
+
+   line(x-6,y-28,x-9,y-15);
+   line(x-5,y-28,x-8,y-15);
+   line(x-4,y-28,x-7,y-15);
+   line(x+3,y-28,x+9,y-15);
+   line(x+6,y-28,x+11,y-15);
+   line(x+5,y-28,x+10,y-15);
+   line(x+4,y-28,x+9,y-15);
+   setcolor(14);
+   line(x+11,y-14,x+10,y-15);
+   line(x+10,y-14,x+9,y-15);
+   line(x-9,y-14,x-8,y-15);
+   line(x-8,y-14,x-7,y-15);
+
+   //face
+   setcolor(14);
+   rectangle(x-3,y-40,x+3,y-32);
+   setfillstyle(1,14);
+   floodfill(x,y-36,14);
+   rectangle(x-1,y-30,x+1,y-32);
+   setfillstyle(1,14);
+   floodfill(x,y-31,14);
+   setcolor(8);
+
+   //eyes
+   setcolor(6);
+   line(x-3,y-38,x-2,y-36);
+   line(x+3,y-38,x+2,y-36);
+
+   //mouth
+   arc(x,y-35,200,340,2);
+
+   //cap
+   setcolor(1);
+   for(int head=0; head<5; head++)
+    {arc(x,y-41,0,180,head+1);}
+    line(x+3,y-42,x-7,y-42);
+    line(x+3,y-41,x-7,y-41);
+    setcolor(8);
+}
+
+
+void gdlf(int x,int y)
+{ //GANDALF
+  //man
+  int prevy=y,prevx=x,superodd;
+  setcolor(0);
+  for(superodd=prevy;superodd>prevy-15;superodd--)
+   {line(prevx-5,superodd,prevx+5,superodd);}
+  setcolor(8);
+
+  //legs
+  setcolor(1);
+  rectangle(x+4,y-3,x+1,y-20);
+  setfillstyle(1,1);
+  floodfill(x+2,y-4,1);
+  rectangle(x-3,y-3,x-1,y-20);
+  setfillstyle(1,1);
+  floodfill(x-2,y-4,1);
+  setcolor(15);
+  rectangle(x+5,y-3,x+1,y-4);
+  rectangle(x-4,y-3,x-1,y-4);
+
+
+  //torso
+  setcolor(15);
+  rectangle(x-3,y-15,x+5,y-24);
+  setfillstyle(1,15);
+  floodfill(x-2,y-16,15);
+  setcolor(15);
+  rectangle(x-3,y-15,x+4,y-13);
+  setfillstyle(1,15);
+  floodfill(x-2,y-14,15);
+  setcolor(0);
+  settextstyle(2,0,4);
+  outtextxy(x-2,y-25,"G");
+
+  //arms
+  setcolor(15);
+  line(x-3,y-23,x-9,y-24);
+  line(x-6,y-23,x-11,y-24);
+  line(x-5,y-23,x-10,y-24);
+  line(x-4,y-23,x-9,y-24);
+  line(x+3,y-23,x+11,y-24);
+  line(x+6,y-23,x+13,y-24);
+  line(x+5,y-23,x+12,y-24);
+  line(x+4,y-23,x+11,y-24);
+  setcolor(14);
+  line(x+13,y-23,x+12,y-24);
+  line(x+13,y-23,x+11,y-24);
+  line(x-11,y-23,x-10,y-24);
+  line(x-10,y-23,x-9,y-24);
+
+  //face
+  setcolor(14);
+  rectangle(x-3,y-35,x+3,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-31,14);
+  rectangle(x-1,y-25,x+1,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-26,14);
+  setcolor(8);
+
+  //eyes
+  setcolor(6);
+  line(x-3,y-33,x-2,y-31);
+  line(x+3,y-33,x+2,y-31);
+
+  //mouth
+  line(x-1,y-28,x+1,y-28);
+
+  //cap
+  setcolor(2);
+  for(int head=0; head<5; head++)
+   {arc(x,y-36,0,180,4-head);}
+  line(x+3,y-37,x-7,y-37);
+  line(x+3,y-36,x-7,y-36);
+  setcolor(8);
+}
+
+void en(int x,int y)
+{ //man
+  int prevy=y,prevx=x,superodd;
+  setcolor(0);
+  for(superodd=prevy;superodd>prevy-15;superodd--)
+   {line(prevx-5,superodd,prevx+5,superodd);}
+  setcolor(8);
+
+  //legs
+  setcolor(2);
+  rectangle(x+4,y-3,x+1,y-20);
+  setfillstyle(1,2);
+  floodfill(x+2,y-4,2);
+  rectangle(x-3,y-3,x-1,y-20);
+  setfillstyle(1,2);
+  floodfill(x-2,y-4,2);
+  setcolor(15);
+  rectangle(x+5,y-3,x+1,y-4);
+  rectangle(x-4,y-3,x-1,y-4);
+
+
+  //torso
+  setcolor(6);
+  rectangle(x-3,y-15,x+5,y-24);
+  setfillstyle(1,6);
+  floodfill(x-2,y-16,6);
+  setcolor(6);
+  rectangle(x-3,y-15,x+4,y-13);
+  setfillstyle(1,6);
+  floodfill(x-2,y-14,6);
+  setcolor(0);
+  settextstyle(2,0,4);
+  outtextxy(x-2,y-25,"E");
+
+  //arms
+  setcolor(6);
+  line(x-3,y-23,x-9,y-24);
+  line(x-6,y-23,x-11,y-24);
+  line(x-5,y-23,x-10,y-24);
+  line(x-4,y-23,x-9,y-24);
+  line(x+3,y-23,x+11,y-24);
+  line(x+6,y-23,x+13,y-24);
+  line(x+5,y-23,x+12,y-24);
+  line(x+4,y-23,x+11,y-24);
+  setcolor(14);
+  line(x+13,y-23,x+12,y-24);
+  line(x+13,y-23,x+11,y-24);
+  line(x-11,y-23,x-10,y-24);
+  line(x-10,y-23,x-9,y-24);
+
+  //face
+  setcolor(14);
+  rectangle(x-3,y-35,x+3,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-31,14);
+  rectangle(x-1,y-25,x+1,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-26,14);
+  setcolor(8);
+
+  //eyes
+  setcolor(6);
+  line(x-3,y-33,x-2,y-31);
+  line(x+3,y-33,x+2,y-31);
+
+  //mouth
+  line(x-1,y-28,x+1,y-28);
+
+  //cap
+  setcolor(4);
+  for(int head=0; head<5; head++)
+   {arc(x,y-36,0,180,4-head);}
+  line(x+3,y-37,x-7,y-37);
+  line(x+3,y-36,x-7,y-36);
+  setcolor(8);
+}
+
+
+void vic(int x,int y)
+{ //Gen. Victor
+  //man
+  int prevy=y,prevx=x,superodd;
+  setcolor(0);
+  for(superodd=prevy;superodd>prevy-15;superodd--)
+   {line(prevx-5,superodd,prevx+5,superodd);}
+  setcolor(8);
+
+  //legs
+  setcolor(4);
+  rectangle(x+4,y-3,x+1,y-20);
+  setfillstyle(1,4);
+  floodfill(x+2,y-4,4);
+  rectangle(x-3,y-3,x-1,y-20);
+  setfillstyle(1,4);
+  floodfill(x-2,y-4,4);
+
+  //shoes
+  setcolor(1);
+  rectangle(x+5,y-3,x+1,y-4);
+  rectangle(x-4,y-3,x-1,y-4);
+
+  //torso
+  setcolor(2);
+  rectangle(x-3,y-15,x+5,y-24);
+  setfillstyle(1,2);
+  floodfill(x-2,y-16,2);
+  setcolor(2);
+  rectangle(x-3,y-15,x+4,y-13);
+  setfillstyle(1,2);
+  floodfill(x-2,y-14,2);
+  setcolor(0);
+  settextstyle(2,0,4);
+  outtextxy(x-2,y-25,"V");
+
+  //arms
+  setcolor(2);
+  line(x-3,y-23,x-9,y-24);
+  line(x-6,y-23,x-11,y-24);
+  line(x-5,y-23,x-10,y-24);
+  line(x-4,y-23,x-9,y-24);
+  line(x+3,y-23,x+11,y-24);
+  line(x+6,y-23,x+13,y-24);
+  line(x+5,y-23,x+12,y-24);
+  line(x+4,y-23,x+11,y-24);
+  setcolor(14);
+  line(x+13,y-23,x+12,y-24);
+  line(x+13,y-23,x+11,y-24);
+  line(x-11,y-23,x-10,y-24);
+  line(x-10,y-23,x-9,y-24);
+
+  //face
+  setcolor(14);
+  rectangle(x-3,y-35,x+3,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-31,14);
+  rectangle(x-1,y-25,x+1,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-26,14);
+  setcolor(8);
+
+  //eyes
+  setcolor(6);
+  line(x-3,y-33,x-2,y-31);
+  line(x+3,y-33,x+2,y-31);
+
+  //mouth
+  line(x-1,y-28,x+1,y-28);
+
+  //cap
+  setcolor(1);
+  for(int head=0; head<5; head++)
+   {arc(x,y-36,0,180,4-head);}
+  line(x+3,y-37,x-7,y-37);
+  line(x+3,y-36,x-7,y-36);
+  setcolor(8);
+}
+
+void trophy()
+{int xt=100,yt=50;
+ setcolor(0);
+ setfillstyle(1,6);
+ bar(100+xt,200+yt,115+xt,220+yt);
+ rectangle(100+xt,200+yt,115+xt,220+yt);
+ bar(105+xt,220+yt,110+xt,227+yt);
+ bar(100+xt,227+yt,115+xt,230+yt);
+ setfillstyle(9,9);
+ bar(105+xt,208+yt,110+xt,212+yt);
+ setcolor(6);
+ line(93+xt,203+yt,100+xt,203+yt);      //left
+ line(93+xt,203+yt,100+xt,219+yt);
+ line(115+xt,203+yt,122+xt,203+yt);	//right
+ line(122+xt,203+yt,115+xt,219+yt);
+}
+
+void healbox()
+{int xh=0,yh=0;
+ setfillstyle(1,15);
+ bar(100+xh,200+yh,135+xh,225+yh);
+ setcolor(2);
+ setfillstyle(1,2);
+ bar(110+xh,210+yh,125+xh,215+yh);
+ bar(115+xh,205+yh,120+xh,220+yh);
+}
+
+void strk(int x,int y)
+{ //Stryker
+  //man
+  int prevy=y,prevx=x,superodd;
+  setcolor(0);
+  for(superodd=prevy;superodd>prevy-15;superodd--)
+   {line(prevx-5,superodd,prevx+5,superodd);}
+  setcolor(8);
+
+  //legs
+  setcolor(1);
+  rectangle(x+4,y-3,x+1,y-20);
+  setfillstyle(1,1);
+  floodfill(x+2,y-4,1);
+  rectangle(x-3,y-3,x-1,y-20);
+  setfillstyle(1,1);
+  floodfill(x-2,y-4,1);
+  setcolor(15);
+  rectangle(x+5,y-3,x+1,y-4);
+  rectangle(x-4,y-3,x-1,y-4);
+
+  //torso
+  setcolor(5);
+  rectangle(x-3,y-15,x+5,y-24);
+  setfillstyle(1,5);
+  floodfill(x-2,y-16,5);
+  setcolor(5);
+  rectangle(x-3,y-15,x+4,y-13);
+  setfillstyle(1,5);
+  floodfill(x-2,y-14,5);
+  setcolor(15);
+  settextstyle(2,0,4);
+  outtextxy(x-2,y-25,"S");
+
+
+  //arms
+  setcolor(5);
+  line(x-3,y-23,x-9,y-24);
+  line(x-6,y-23,x-11,y-24);
+  line(x-5,y-23,x-10,y-24);
+  line(x-4,y-23,x-9,y-24);
+  line(x+3,y-23,x+11,y-24);
+  line(x+6,y-23,x+13,y-24);
+  line(x+5,y-23,x+12,y-24);
+  line(x+4,y-23,x+11,y-24);
+
+  //hands
+  setcolor(14);
+  line(x+13,y-23,x+12,y-24);
+  line(x+13,y-23,x+11,y-24);
+  line(x-11,y-23,x-10,y-24);
+  line(x-10,y-23,x-9,y-24);
+
+  //face
+  setcolor(14);
+  rectangle(x-3,y-35,x+3,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-31,14);
+  rectangle(x-1,y-25,x+1,y-27);
+  setfillstyle(1,14);
+  floodfill(x,y-26,14);
+  setcolor(8);
+
+  //eyes
+  setcolor(6);
+  line(x-3,y-33,x-2,y-31);
+  line(x+3,y-33,x+2,y-31);
+
+  //mouth
+  line(x-1,y-28,x+1,y-28);
+
+  //cap
+  setcolor(3);
+  for(int head=0; head<5; head++)
+   {arc(x,y-36,0,180,4-head);}
+  line(x+3,y-37,x-7,y-37);
+  line(x+3,y-36,x-7,y-36);
+  setcolor(8);
+}
+void dial_1();
+void main()
+{clrscr();
+ int gd=DETECT,gm;
+ initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+// trophy();
+// healbox();
+ call();
+// joystick();
+ dial_1();
+ getch();
+ closegraph();
+}
+void call()
+{
+cleardevice();
+screen();
+leon(200,425);
+rtcol();
+ltcol();
+}
+
+void dial_1()
+{
+char dec;
+
+leon(75,65);
+slow_print("*YAAAAAAAWWWWWWWN* Oh! What a boring day.",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+slow_print("WAIT ! Is that a quest that I am smelling ??.",35,22,2);
+anykey();
+call();
+
+vic(75,65);
+vic(300,425);
+slow_print("Prince LEONHART I have a bad news....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+vic(300,425);
+slow_print("1 Good to see you Vic.",20,30,3);
+slow_print("2 Tell me Victor.",20,30,4);
+gotoxy(55,5)   ;
+cout<<"Press 1 or 2....";
+cin>>dec;
+call();
+
+vic(75,65);
+vic(300,425);
+if(dec=='1')
+{
+slow_print("Stryker has taken control of our kingdom.",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+vic(400,425);
+slow_print("Stryker ??? He owes me a billon dollars....",35,22,2);
+slow_print("I am going to kill that son of gun Stryker.",35,22,3);
+}
+
+else if(dec=='2')
+{
+slow_print("Our kingdom has been captured by Stryker.",35,22,2);
+slow_print("He is holding your father Auron and mother Aeris hostage.",35,22,3);
+slow_print("I barely made out myself.",35,22,4);
+anykey();
+call();
+
+leon(75,65);
+vic(300,425);
+slow_print("I am going to kill that son of gun Stryker.",35,22,3);
+}
+anykey();
+call();
+
+vic(75,65);
+vic(300,425);
+slow_print("That seems to be our only option....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+vic(300,425);
+slow_print("So is this the part where you tell me to go there.",35,22,2);
+slow_print("and save the kingdom ??.",35,22,3);
+anykey();
+call();
+
+vic(75,65);
+vic(300,425);
+slow_print("Yes your highness !!.",35,22,2);
+slow_print("You must go now....",35,22,3);
+anykey();
+call();
+
+leon(75,65);
+vic(300,425) ;
+slow_print("But it's dangerous to go alone !!.",35,22,2);
+slow_print("Won't you come with me ??.",35,22,3);
+anykey();
+call();
+
+vic(75,65);
+vic(300,425);
+slow_print("I would, but I have to call other kingdoms aid and.....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+vic(300,425);
+slow_print("*Intercepts* BLAH BLAH BLAH.....",35,22,2);
+slow_print("Cut the crap old man....",35,22,3);
+anykey();
+call();
+
+leon(75,65);
+vic(300,425);
+slow_print("Hey look!! I just got a mission, now my life is complete.",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+slow_print("For those who are busy judging this game, we are going.",35,22,2);
+slow_print("to DisneyLand to get me a princess....",35,22,3);
+anykey();
+
+cleardevice();
+slow_print("THE FHART BEGINS !!!.",300,30,14);
+delay(1000);
+call();
+
+leon(75,65);
+slow_print("My common sense is tingling !!..",35,22,2);
+slow_print("Uggh !! Enemies.....",35,22,3);
+anykey();
+call();
+
+en(75,65);
+en(400,425);   //en
+slow_print("Go back prince, if you want to live....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+en(400,425);
+slow_print("Do I look like Captain America ??.",35,22,2);
+slow_print("I'm here to kill you all....",35,22,3);
+anykey();
+call();
+
+en(75,65);  //en;
+en(400,425);
+slow_print("But you don't have any weapons and me neither....",35,22,2);
+slow_print("WAIT !! I have a GameBoy....!!",35,22,3);
+anykey();
+call();
+
+leon(65,75);
+en(400,425);
+slow_print("1 That will work....",35,25,2);
+slow_print("2 A GameBoy, Seriously ??.",35,25,3);
+gotoxy(55,5);
+cout<<"Press 1 or 2....";
+cin>>dec;
+call();
+
+en(75,65);
+en(400,425);
+if(dec =='1')
+{
+slow_print("Beat my highscore and I shall let you pass....",35,22,2);
+}
+else if(dec == '2')
+{
+slow_print("Yeah mate....",35,22,2);
+}
+anykey();
+slow_print("Take it fast I do not have whole day....",35,22,3);
+cleardevice();
+slow_print("GAMEBOY ACQUIRED....!!",250,25,10);
+call();
+joystick();
+call();
+
+leon(75,65);
+en(400,425);
+slow_print("A game within a game ?? GAMECEPTION....",35,22,2);
+slow_print("*MIND = BLOWN.",35,25,3);
+anykey();
+///////////////////CALL GAME 1/////////////
+///if game lose////
+///take out of the game and ask for the player name and all scores
+///if game win
+call();
+leon(75,65);
+slow_print("I can do this whole day....",35,22,2);
+anykey();
+call();
+leon(75,65);
+slow_print("I knew I was gonna win....",35,22,2);
+slow_print("That's what I have been training for my whole life....",35,22,3);
+anykey();
+call();
+
+leon(75,65);
+slow_print("Is there a WalMart nearby ??.",35,22,2);
+slow_print("I need a RedBull, I'm feeling low....",35,22,3);
+anykey();
+call();
+
+leon(75,65);
+slow_print("Seriously, who wrote this stuff ??.",35,22,2);
+anykey();
+call();
+
+/////ITS DJI
+slow_print("I WROTE.....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+slow_print("Woah !! Who are you ? and Why cant I see you ??.",35,22,2);
+anykey();
+call();
+
+////// ITS DJI
+slow_print("HAHAHA I AM YOUR CREATER.....",35,22,2);
+slow_print("NOW SHUT UP AND PLAY THE GAME....",35,22,3);
+anykey();
+call();
+
+leon(75,65);
+slow_print("Woah !! I think i should go further.....",35,22,2);
+anykey();
+cleardevice();
+slow_print("LEVEL 1 COMPLETED !!!.",600,30,14);
+call();
+
+gdlf(75,65);
+gdlf(400,425);
+slow_print("YOU SHALL NOT PASS !!.",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+gdlf(400,425);
+slow_print("Out of my way copycat.",35,22,2);
+anykey();
+call();
+
+gdlf(75,65);
+gdlf(400,425);
+slow_print("Death is just another path, one which we all must take....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+gdlf(400,425);
+slow_print("Stop quoting Gandalf,this is not Lord Of Rings....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+gdlf(400,425);
+slow_print("What do you want ??.",35,22,2);
+anykey();
+call();
+
+gdlf(400,425);
+gdlf(75,65);
+slow_print("Beat me in my game of BB and you will be on you way..",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+gdlf(400,425);
+slow_print("What's BB ??.",35,22,2);
+slow_print("Aggh !! Dosen't matter I can defaet you in your.",35,22,3);
+slow_print("boring game !! Bring It On !!.",35,22,4);
+anykey();
+call();
+
+////////call game 2
+/////if lost then ask name and display scores
+/////if game won
+leon(75,65);
+gdlf(400,425);
+slow_print("In your face old man....",35,22,2);
+anykey();
+cleardevice();
+slow_print("LEVEL 2 COMPLETED !!!!.",600,35,14);
+delay(1000);
+call();
+
+leon(75,65) ;
+slow_print("Is there more ???.",35,22,2);
+slow_print("How long is this game ?? I need a Cheese Burger....",35,22,3);
+anykey();
+call();
+
+leon(75,65) ;
+strk(400,425);
+slow_print("You can't see my kingdom but its Huuuge and.",35,22,2);
+slow_print("I am finally here...",35,22,3);
+anykey();
+call();
+
+strk(75,65);
+strk(400,425);
+slow_print("I was waiting for you....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+strk(400,425);
+slow_print("That's so sweet Stryker, but I still want my.",35,22,2);
+slow_print("money back !!.",35,22,3);
+anykey();
+call();
+
+strk(75,65);
+strk(400,425);
+slow_print("And your parents ??.",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+strk(400,425);
+slow_print("Ugghh !! Yeah them too...",35,22,2);
+anykey();
+call();
+
+strk(75,65);
+strk(400,425);
+slow_print("Okay !! Complete my jump maze and get what you came for..",35,22,2);
+slow_print("And if you fail, I keep everything and destroy your family..",35,22,3);
+anykey();
+call();
+
+strk(75,65);
+strk(400,425);
+slow_print("The rules are simple for you,....",35,22,2);
+anykey();
+call();
+
+leon(75,65);
+strk(400,425);
+slow_print("Yank Yank !! I know the rules....",35,22,2);
+anykey();
+call();
+
+strk(75,65);
+strk(400,425);
+slow_print("So, lets begin...",35,22,2);
+anykey();
+
+////////call game 3
+///// if loose ask name and disp score
+////if win
+call();
+leon(75,65);
+strk(400,425);
+slow_print("You are going down beautiful...",35,22,2);
+anykey();
+
+cleardevice();
+slow_print("LEVEL 3 COMPLETED !!!.",300,32,14);
+delay(1000);
+cleardevice();
+slow_print("CONGRATULATIONS !!! YOU HAVE COMPLETED THE GAME !!.",400,25,14);
+///////ask for name display scores
+
+
+///////on every display of score follow it by the credits..
+
+
+}
